@@ -5,6 +5,11 @@ import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
+
+import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
 ReactDOM.render(
    <BrowserRouter>
       <App/>
