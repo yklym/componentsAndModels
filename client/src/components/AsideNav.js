@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const AsideNav = ({ navToggled }) => {
+export const AsideNav = ({ navToggled, toggleNav }) => {
     return (
         <ul className={'navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ' + (navToggled ? 'toggled' : '')} id="accordionSidebar">
 
@@ -96,7 +96,7 @@ export const AsideNav = ({ navToggled }) => {
             <hr className="sidebar-divider d-none d-md-block" />
 
             <div className="text-center d-none d-md-inline">
-                <button className="rounded-circle border-0" id="sidebarToggle"></button>
+                <button className="rounded-circle border-0" id="sidebarToggle" onClick={toggleNav}></button>
             </div>
 
         </ul>

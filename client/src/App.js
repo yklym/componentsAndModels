@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import './App.css';
 import { AsideNav } from './components/AsideNav';
 import { Test } from './views/Test';
 import { TopNav } from './components/TopNav';
 import { Footer } from './components/Footer';
+
+import './App.css';
 
 
 const App = () => {
   const [navToggled, setNavToggled] = useState(true);
   return (
     <div id="wrapper">
-      <AsideNav navToggled={navToggled} />
+      <AsideNav navToggled={navToggled} toggleNav={() => setNavToggled(!navToggled)}/>
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
           <TopNav toggleAsideNav={() => setNavToggled(!navToggled)}/>
