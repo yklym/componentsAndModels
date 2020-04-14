@@ -21,10 +21,6 @@ app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'client/')));
 
-app.use((req, res, next) => {
-    console.log('here', req.body);
-})
-
 app.use('/api', routes);
 
 app.listen(config.PORT, () => console.log(`LISTENING ON PORT ${config.PORT}`));
