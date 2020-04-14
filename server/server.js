@@ -10,12 +10,13 @@ const config = require('./config/config');
 
 const app = express();
 app.use(cors());
- 
-mongoose.connect(config.DB_URL, { useNewUrlParser: true })
+
+
+mongoose.connect(config.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('connected to db'));
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
