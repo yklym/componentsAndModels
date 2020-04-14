@@ -10,7 +10,7 @@ const config = require('./config/config');
 
 const app = express();
 app.use(cors());
-
+ 
 mongoose.connect(config.DB_URL, { useNewUrlParser: true })
     .then(() => console.log('connected to db'));
 
