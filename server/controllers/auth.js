@@ -5,16 +5,17 @@ module.exports.register = async (req, res, next) => {
     const { firstName, lastName, password, email } = req.body;
     if (!firstName || !lastName || !password || !email) {
         // @todo some err handling
-        res.json({
+        res.status(400).json({
             err: 'error bliat'
         });
+        return;
     }
 
     const passwordHash = utils.hashPassword(password);
     const user = new UserModel({ firstName, lastName, passwordHash, email })
     try {
         await user.save();
-        res.json({ user });
+        res.status(201).json({ user });
 
     } catch (err) {
         res.json({ err })
