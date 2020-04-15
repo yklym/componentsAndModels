@@ -2,31 +2,33 @@ import React from 'react';
 import { Modal, ModalBody, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { registerUser } from '../../services/authService';
+import { useState } from 'react';
 
 export const RegisterModal = ({ show, closeModal }) => {
     const { register, handleSubmit } = useForm();
+    const [ passwordsEqual, setPasswordsEqual ] = useState(true);
 
     function onSubmit(data) {
         if (data.passwordRepeat !== data.password) {
-            //    do smth, idk idc
+            setPasswordsEqual(false);
             console.log("passwords dont match")
             return;
         }
+        setPasswordsEqual(true);
         registerUser(data)
             .then(res => {
                 if (res.code === 404) {
                     //    do smth again, idgf
                 }
-                return res.json();
-            }).then(parseRes => {
+                return res;
+            }).then(res => {
                 closeModal();
-                console.log('response', parseRes);
+                console.log('response', res);
             }).catch(err => console.log(err));
     }
 
     return (
         <Modal show={show}>
-            {/* <Modal.Header>Register</Modal.Header> */}
             <ModalBody>
                 <div className="d-flex">
                     <h1 className="h2 mt-2">Create an uccount</h1>
@@ -53,13 +55,16 @@ export const RegisterModal = ({ show, closeModal }) => {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <div className=" col-sm-12 col-md-6 col-lg-6">
-                            <input type="password" className="form-control form-control-user" id="password" name="password"
+                        <div className="col-sm-12 col-md-6 col-lg-6">
+                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="password" name="password"
                                 placeholder="Password" ref={register} />
                         </div>
-                        <div className=" col-sm-12 col-md-6 col-lg-6">
-                            <input type="password" className="form-control form-control-user" id="passwordRepeat"
+                        <div className="col-sm-12 col-md-6 col-lg-6">
+                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="passwordRepeat"
                                 name="passwordRepeat" placeholder="Repeat password" ref={register} />
+                        </div>
+                        <div className="col-12 text-danger">
+                            <div className="text-center">{passwordsEqual ? '' : 'Passwords differ'}</div>
                         </div>
                     </div>
                     <button type="submit" className="btn btn-primary btn-user btn-block">Register</button>
@@ -80,7 +85,6 @@ export const RegisterModal = ({ show, closeModal }) => {
                 <hr />
                 <a href="#" className="text-center"><p>Already have an account?</p></a>
             </ModalBody>
-            {/* <Modal.Footer>This is the footer</Modal.Footer> */}
         </Modal>
     )
 }
