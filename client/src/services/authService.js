@@ -1,9 +1,25 @@
 import { apiLink } from '../shared/apiLink';
 import { postData } from '../helpers/http';
 
-export const registerUser = (userData) => {
-    const url = apiLink + '/auth/register';
-    return postData(url, userData)
-          .then(res => res.json());
+export class AuthService {
+
+    static get currentUser() {
+        return {
+            firstName: 'Andrii', 
+            lastName: 'Koval', 
+            email: 'mail@mail.com', 
+        };
+    }
+
+    get isAuthorised() {
+        return !!AuthService.currentUser;
+    }
+
+    static async registerUser(userData) {
+        const url = apiLink + '/auth/register';
+        const reponse = await postData(url, userData).json();
+        // localStorage.setItem()
+        return reponse;
+    }
 }
 

@@ -1,3 +1,12 @@
 .sidebar {
   transition: 0.2s;
 }
+
+ul {
+  list-style: none;
+}
+
+.item-card:hover {
+  transition: 0.2s;
+  margin-left: 1em;
+}

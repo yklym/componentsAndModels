@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, ModalBody, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
-import { registerUser } from '../../services/authService';
+import { AuthService } from '../../services/authService';
 import { useState } from 'react';
 
 export const RegisterModal = ({ show, closeModal }) => {
@@ -15,7 +15,7 @@ export const RegisterModal = ({ show, closeModal }) => {
             return;
         }
         setPasswordsEqual(true);
-        registerUser(data)
+        AuthService.registerUser(data)
             .then(res => {
                 if (res.code === 404) {
                     //    do smth again, idgf
