@@ -6,8 +6,10 @@ ul {
   list-style: none;
 }
 
-.list-item:hover a {
-  text-decoration: none;
+
+* {
+  /* Чисто что бы не было нижнего подчеркивания никогда. Сможем и сами добавить, когда надо будет */
+  text-decoration: none !important;
 }
 
 
@@ -15,4 +17,16 @@ ul {
   cursor: pointer;
   transition: 0.2s;
   margin-left: 1em;
+}
+
+.document-add-btn {
+  font-size: 1.3em;
+  padding: 0.4em;
+  border-radius: 0.6em;
+}
+
+.document-add-btn:hover {
+  background: rgb(246, 243, 243);
+  cursor: pointer;
+  transition: 0.2s;
 }

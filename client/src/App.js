@@ -10,6 +10,7 @@ import './App.css';
 
 import { AuthService } from './services/authService';
 import { DocumentService } from './services/documentService';
+import { NewDocumet } from './views/NewDocument';
 
 
 const App = () => {
@@ -36,7 +37,8 @@ const App = () => {
           <TopNav toggleAsideNav={() => setNavToggled(!navToggled)} />
           <div className="container-fluid">
             <Switch>
-              <Route exact path='/home' component={() => <Main teams={teams} documents={userDocuments}></Main>} />
+              <Route exact path="/home" component={() => <Main teams={teams} documents={userDocuments} />} />
+              <Route exact path="/documents/new" component={() => <NewDocumet />}></Route>
               <Redirect to="/home" />
             </Switch>
           </div>
