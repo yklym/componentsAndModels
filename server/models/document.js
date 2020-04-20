@@ -5,6 +5,7 @@ const documentSchema = new mongoose.Schema({
     url: { type: String, required: true }, 
     type: { type: String, trim: true }, 
     bio: { type: String, trim: true },
+    date: { type: Date, default: Date.now },
     author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' }
 });
 
