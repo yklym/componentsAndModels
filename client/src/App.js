@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { TeamsService } from './services/teamService';
 
 import './App.css';
+
 import { AuthService } from './services/authService';
 import { DocumentService } from './services/documentService';
 

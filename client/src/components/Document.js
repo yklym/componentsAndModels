@@ -1,5 +1,6 @@
 import React from 'react';
-
+import * as moment from 'moment';
+import { AuthService } from '../services/authService';
 
 
 const getDoctypeColorClass = type => {
@@ -30,6 +31,8 @@ const IconWithType = ({ type }) => (
     <i className={'fas fa-' + getDoctypeIconClass(document.type) + ` ${getDoctypeColorClass(type)}`}>{type}</i>
 )
 
+const formatDate = (date) => moment(date).startOf('minute').fromNow();
+
 // title: { type: String, trim: true }, 
 //     url: { type: String, required: true }, 
 //     type: { type: String, trim: true }, 
@@ -42,9 +45,14 @@ export const Document = ({ document }) => (
                 <div className="col mr-2">
                     <div className="text-xl font-weight-bold text-info text-uppercase mb-1">{document.title}</div>
                     <div className="text-secondary">{document.bio}</div>
-                    <div className="d-flex justify-content-end">
+                    <div className="d-flex justify-content-between">
+                        <datetime>Created {formatDate(document.date)}</datetime>
                         <IconWithType type={document.type} />
                     </div>
+                    <div className="author">Author: {document.author._id === 
+                                                    AuthService.getCurrentUser()._id ?
+                                                    'You' :
+                                                    `${document.author.firstName} ${document.author.lastName}`}</div>
                 </div>
             </div>
         </div>

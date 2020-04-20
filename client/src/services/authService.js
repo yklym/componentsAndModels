@@ -3,15 +3,16 @@ import { postData } from '../helpers/http';
 
 export class AuthService {
 
-    static get currentUser() {
+    static getCurrentUser() {
         return {
+            _id: '1',
             firstName: 'Andrii', 
             lastName: 'Koval', 
             email: 'mail@mail.com', 
         };
-    }
+    } 
 
-    static get isAuthorised() {
+    static isAuthorised() {
         return !!AuthService.currentUser;
     }
 
