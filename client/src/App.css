@@ -6,7 +6,13 @@ ul {
   list-style: none;
 }
 
+.list-item:hover a {
+  text-decoration: none;
+}
+
+
 .item-card:hover {
+  cursor: pointer;
   transition: 0.2s;
   margin-left: 1em;
 }
