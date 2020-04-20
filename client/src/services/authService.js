@@ -11,7 +11,7 @@ export class AuthService {
         };
     }
 
-    get isAuthorised() {
+    static get isAuthorised() {
         return !!AuthService.currentUser;
     }
 
