@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { AuthService } from '../../services/authService';
 import { useState } from 'react';
 
-export const RegisterModal = ({ show, closeModal }) => {
+export const RegisterModal = ({ show, closeModal, onLogin }) => {
     const { register, handleSubmit } = useForm();
     const [ passwordsEqual, setPasswordsEqual ] = useState(true);
 
@@ -22,7 +22,7 @@ export const RegisterModal = ({ show, closeModal }) => {
                 }
                 return res;
             }).then(res => {
-                closeModal();
+                onLogin();
                 console.log('response', res);
             }).catch(err => console.log(err));
     }
@@ -39,28 +39,28 @@ export const RegisterModal = ({ show, closeModal }) => {
                 <form className="user container" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group row">
                         <div className="col-sm-12 col-md-6 col-lg-6">
-                            <input type="text" className="form-control form-control-user" id="firstname" name="firstName"
+                            <input type="text" className="form-control form-control-user" id="firstname" name="firstName" required
                                 placeholder="First name" required ref={register} />
                         </div>
                         <div className="col-sm-12 col-md-6 col-lg-6">
-                            <input type="text" className="form-control form-control-user" id="lastname" name="lastName"
+                            <input type="text" className="form-control form-control-user" id="lastname" name="lastName" required
                                 placeholder="Last name" ref={register} />
                         </div>
                     </div>
 
                     <div className="form-group row">
                         <div className="col">
-                            <input type="text" className="form-control form-control-user" type="email" id="email"
+                            <input type="text" className="form-control form-control-user" type="email" id="email" required
                                 name="email" placeholder="Email" ref={register} />
                         </div>
                     </div>
                     <div className="form-group row">
                         <div className="col-sm-12 col-md-6 col-lg-6">
-                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="password" name="password"
+                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="password" name="password" required
                                 placeholder="Password" ref={register} />
                         </div>
                         <div className="col-sm-12 col-md-6 col-lg-6">
-                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="passwordRepeat"
+                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="passwordRepeat" required
                                 name="passwordRepeat" placeholder="Repeat password" ref={register} />
                         </div>
                         <div className="col-12 text-danger">
@@ -83,7 +83,7 @@ export const RegisterModal = ({ show, closeModal }) => {
                     </div>
                 </form>
                 <hr />
-                <a href="#" className="text-center"><p>Already have an account?</p></a>
+                <a href="#" className="text-center" onClick={onLogin}><p>Already have an account?</p></a>
             </ModalBody>
         </Modal>
     )

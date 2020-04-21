@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export const AsideNav = ({ navToggled, toggleNav }) => {
     return (
@@ -14,10 +15,12 @@ export const AsideNav = ({ navToggled, toggleNav }) => {
             <hr className="sidebar-divider my-0" />
 
             <li className="nav-item active">
-                <a className="nav-link" href="/home">
-                    <i className="fas fa-fw fa-home"></i>
-                    <span>Dashboard</span>
-                </a>
+                <Link to="/home">
+                    <a className="nav-link">
+                        <i className="fas fa-fw fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </Link>
             </li>
 
             <hr className="sidebar-divider" />
