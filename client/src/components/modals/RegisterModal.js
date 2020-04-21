@@ -1,16 +1,34 @@
 import React from 'react';
-import { LocalForm, Control } from 'react-redux-form';
-import { FormLabel, Modal, ModalBody, Button } from 'react-bootstrap';
+import { Modal, ModalBody, Button } from 'react-bootstrap';
+import { useForm } from 'react-hook-form'
+import { AuthService } from '../../services/authService';
+import { useState } from 'react';
 
 export const RegisterModal = ({ show, closeModal }) => {
+    const { register, handleSubmit } = useForm();
+    const [ passwordsEqual, setPasswordsEqual ] = useState(true);
 
-    function onSubmit(val) {
-        alert(JSON.stringify(val));
+    function onSubmit(data) {
+        if (data.passwordRepeat !== data.password) {
+            setPasswordsEqual(false);
+            console.log("passwords dont match")
+            return;
+        }
+        setPasswordsEqual(true);
+        AuthService.registerUser(data)
+            .then(res => {
+                if (res.code === 404) {
+                    //    do smth again, idgf
+                }
+                return res;
+            }).then(res => {
+                closeModal();
+                console.log('response', res);
+            }).catch(err => console.log(err));
     }
 
     return (
         <Modal show={show}>
-            {/* <Modal.Header>Register</Modal.Header> */}
             <ModalBody>
                 <div className="d-flex">
                     <h1 className="h2 mt-2">Create an uccount</h1>
@@ -18,46 +36,55 @@ export const RegisterModal = ({ show, closeModal }) => {
                         <span aria-hidden="true" className="h1">&times;</span>
                     </a>
                 </div>
-                <LocalForm className="user container" onSubmit={onSubmit}>
+                <form className="user container" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group row">
                         <div className="col-sm-12 col-md-6 col-lg-6">
-                            <Control.text className="form-control form-control-user" id="firstname" model=".firstname" placeholder="First name" required />
+                            <input type="text" className="form-control form-control-user" id="firstname" name="firstName"
+                                placeholder="First name" required ref={register} />
                         </div>
                         <div className="col-sm-12 col-md-6 col-lg-6">
-                            <Control.text className="form-control form-control-user" id="lastname" model=".lastname" placeholder="Last name" />
+                            <input type="text" className="form-control form-control-user" id="lastname" name="lastName"
+                                placeholder="Last name" ref={register} />
                         </div>
                     </div>
 
                     <div className="form-group row">
                         <div className="col">
-                            <Control.text className="form-control form-control-user" type="email" id="email" model=".email" placeholder="Email" />
+                            <input type="text" className="form-control form-control-user" type="email" id="email"
+                                name="email" placeholder="Email" ref={register} />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <div className=" col-sm-12 col-md-6 col-lg-6">
-                            <Control.text className="form-control form-control-user" id="password" model=".password" placeholder="Password" />
+                        <div className="col-sm-12 col-md-6 col-lg-6">
+                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="password" name="password"
+                                placeholder="Password" ref={register} />
                         </div>
-                        <div className=" col-sm-12 col-md-6 col-lg-6">
-                            <Control.text className="form-control form-control-user" id="passwordRepeat" model=".passwordRepeat" placeholder="Repeat password" />
+                        <div className="col-sm-12 col-md-6 col-lg-6">
+                            <input type="password" className={"form-control form-control-user " + (passwordsEqual ? '' : 'is-invalid')} id="passwordRepeat"
+                                name="passwordRepeat" placeholder="Repeat password" ref={register} />
+                        </div>
+                        <div className="col-12 text-danger">
+                            <div className="text-center">{passwordsEqual ? '' : 'Passwords differ'}</div>
                         </div>
                     </div>
-                    <Button type="submit" className="btn btn-primary btn-user btn-block">Register</Button>
+                    <button type="submit" className="btn btn-primary btn-user btn-block">Register</button>
                     <hr />
+
                     <div className="row">
                         <div className="col">
                             <Button className="btn btn-google btn-user btn-block"> <i className="fab fa-google fa-fw"></i>
                             Sign in with Google</Button>
                         </div>
                         <div className="col">
-                            <Button className="btn btn-facebook btn-user btn-block"> <i className="fab fa-facebook-f fa-fw"></i>
+                            <Button className="btn btn-facebook btn-user btn-block"> <i
+                                className="fab fa-facebook-f fa-fw"></i>
                             Sign in with Facebook</Button>
                         </div>
                     </div>
-                </LocalForm>
+                </form>
                 <hr />
                 <a href="#" className="text-center"><p>Already have an account?</p></a>
             </ModalBody>
-            {/* <Modal.Footer>This is the footer</Modal.Footer> */}
         </Modal>
     )
 }

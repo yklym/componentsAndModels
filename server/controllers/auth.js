@@ -2,6 +2,7 @@ const utils = require('../utils/password');
 const UserModel = require('../models/user');
 
 
+
 const {jwtAuthStrategy} = require("../utils/auth");
 const passport = require("passport");
 
@@ -21,7 +22,7 @@ module.exports.register = async (req, res, next) => {
 
     const passwordHash = utils.hashPassword(password);
     const user = new UserModel({ firstName, lastName, passwordHash, email })
-    
+
     try {
         await user.save();
         res.status(201).json({ user });
@@ -29,6 +30,7 @@ module.exports.register = async (req, res, next) => {
     } catch (err) {
         res.json({ err })
     }
+
 };
 
 // module.exports.checkToken = function (req, res) {
@@ -54,7 +56,7 @@ module.exports.register = async (req, res, next) => {
 
 // }
 
-module.exports.login = async (req, res, next) =>{
+module.exports.login = async (req, res, next) => {
     const {
         email,
         password
@@ -93,7 +95,4 @@ module.exports.login = async (req, res, next) =>{
     res.status(200).json({
         response: response
     })
-
-    return userDoc;
 };
-
