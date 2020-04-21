@@ -60,10 +60,8 @@ const Documents = ({ documents }) => {
 }
 
 
-export const Main = ({ teams, documents }) => {
-    console.log(teams, documents);
-
-    return (
+export const Main = ({ teams, documents }) => { 
+    return ( 
         <div id="content-wrapper" className="d-flex flex-column">
 
             <div id="content">

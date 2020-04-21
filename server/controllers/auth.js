@@ -1,7 +1,6 @@
+
 const utils = require('../utils/password');
 const UserModel = require('../models/user');
-
-
 
 const {jwtAuthStrategy} = require("../utils/auth");
 const passport = require("passport");

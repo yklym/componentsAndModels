@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 ReactDOM.render(

@@ -19,13 +19,13 @@ ul {
   margin-left: 1em;
 }
 
-.document-add-btn {
+.nav-btn {
   font-size: 1.3em;
   padding: 0.4em;
   border-radius: 0.6em;
 }
 
-.document-add-btn:hover {
+.nav-btn:hover {
   background: rgb(246, 243, 243);
   cursor: pointer;
   transition: 0.2s;
