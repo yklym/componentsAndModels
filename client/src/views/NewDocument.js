@@ -6,11 +6,12 @@ export const NewDocumet = (props) => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (value) => {
-        DocumentService.addDocument(value)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => console.log(err));
+        console.log(value);
+        // DocumentService.addDocument(value)
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+        //     .catch(err => console.log(err));
 
     }
 
@@ -22,13 +23,21 @@ export const NewDocumet = (props) => {
                     <div className="row">
                         <div className="col-sm-12 col-md-6 col-lg-6">
                             <div className="form-group">
-                                <label htmlFor="title">Rename file</label>
+                                <label htmlFor="title">Rename file (optional)</label>
                                 <input type="text" placeholder="Enter new file name" name="title" className="form-control" ref={register}></input>
                                 <span className="text-muted form-text">You can leave uploaded file leaving this field empty</span>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="bio">Enter document description</label>
+                                <label htmlFor="team">Choose team (optional)</label>
+                                <select name="team" id="team" className="form-control" ref={register}>
+                                    <option value="1">Team 1</option>
+                                    <option value="2">Team 2</option>
+                                </select>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="bio">Enter document description (optional)</label>
                                 <textarea className="form-control" id="bio" name="bio" ref={register}></textarea>
                             </div>
                         </div>

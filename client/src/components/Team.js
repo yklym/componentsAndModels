@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Team = ({ team }) => (
-    <div className="card border-left-info shadow h-100 py-2 item-card">
+    <div className="card border-bottom-primary h-100 py-2 hover-up-card">
         <div className="card-body">
             <div className="row no-gutters align-items-center">
                 <div className="col mr-2">
