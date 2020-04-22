@@ -39,20 +39,20 @@ const formatDate = (date) => moment(date).startOf('minute').fromNow();
 //     author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' }
 
 export const Document = ({ document }) => (
-    <div className="card border-left-info shadow h-100 py-2 item-card">
+    <div className="card border-left-info h-100 py-2 hover-right-card">
         <div className="card-body">
             <div className="row no-gutters align-items-center">
                 <div className="col mr-2">
                     <div className="text-xl font-weight-bold text-info text-uppercase mb-1">{document.title}</div>
                     <div className="text-secondary">{document.bio}</div>
-                    <div className="d-flex justify-content-between">
-                        <datetime>Created {formatDate(document.date)}</datetime>
-                        <IconWithType type={document.type} />
-                    </div>
-                    <div className="author">Author: {document.author._id === 
+                    <div className="text-info">Author: {document.author._id === 
                                                     AuthService.getCurrentUser()._id ?
                                                     'You' :
                                                     `${document.author.firstName} ${document.author.lastName}`}</div>
+                    <div className="d-flex justify-content-between mt-2">
+                        <datetime>Created {formatDate(document.date)}</datetime>
+                        <IconWithType type={document.type} />
+                    </div>
                 </div>
             </div>
         </div>

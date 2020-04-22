@@ -14,6 +14,7 @@ import { DocumentService } from './services/documentService';
 import { NewDocumet } from './views/NewDocument';
 
 import { AuthContext } from './contexts/authContext';
+import { Team } from './views/Team';
 
 
 toast.configure({
@@ -54,7 +55,8 @@ const App = () => {
             <div className="container-fluid">
               <Switch>
                 <Route exact path="/home" component={() => <Main teams={teams} documents={userDocuments} />} />
-                <Route exact path="/documents/new" component={() => <NewDocumet />}></Route>
+                <Route exact path="/documents/new" component={() => <NewDocumet />} />
+                <Route       path="/teams/:id" component={() => <Team />}/>
                 <Redirect to="/home" />
               </Switch>
             </div>

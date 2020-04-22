@@ -3,6 +3,7 @@ import { RegisterModal } from './modals/RegisterModal';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/authContext';
 import { LoginModal } from './modals/LoginModal';
+import { userAvaPlaceholer } from '../shared/placeholders';
 
 const UserDropdown = ({ user, toggleRegisterModal, onLogout }) => {
     if (user) {
@@ -10,7 +11,7 @@ const UserDropdown = ({ user, toggleRegisterModal, onLogout }) => {
             <li className="nav-item dropdown no-arrow">
                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span className="mr-2 d-none d-lg-inline text-gray-600 small">{user.firstName} {user.lastName}</span>
-                    <img className="img-profile rounded-circle" src={user.avaUrl || 'https://ra.ac.ae/wp-content/uploads/2017/02/user-icon-placeholder.png'} />
+                    <img className="img-profile rounded-circle" src={user.avaUrl || userAvaPlaceholer} />
                 </a>
                 <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                     <a className="dropdown-item" href="#">

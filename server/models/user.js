@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
     avaUrl: { type: String, trim: true },
     lastName: { type: String, required: true, trim: true }, 
     email: { type: String, required: true, trim: true },
-    passwordHash: { type: String, required: true }
+    passwordHash: { type: String, required: true }, 
+    bio: { type: String, trim: true },
 }, { versionKey: false });
 
 // versionKey: false, что бы не было поля _v

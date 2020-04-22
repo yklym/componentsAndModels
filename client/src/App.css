@@ -6,17 +6,9 @@ ul {
   list-style: none;
 }
 
-
 * {
   /* Чисто что бы не было нижнего подчеркивания никогда. Сможем и сами добавить, когда надо будет */
   text-decoration: none !important;
-}
-
-
-.item-card:hover {
-  cursor: pointer;
-  transition: 0.2s;
-  margin-left: 1em;
 }
 
 .nav-btn {
@@ -29,4 +21,35 @@ ul {
   background: rgb(246, 243, 243);
   cursor: pointer;
   transition: 0.2s;
+}
+
+.user-img {
+  object-fit: cover;
+}
+
+.hover-up-card {
+  bottom: 0;
+}
+
+.hover-right-card {
+  left: 0;
+}
+
+.hover-up-card:hover, .hover-right-card:hover {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hover-up-card:hover {
+  bottom: 0.5em;
+  -webkit-box-shadow: 0px 11px 22px -7px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 11px 22px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 11px 22px -7px rgba(0, 0, 0, 0.75);
+}
+
+.hover-right-card:hover {
+  left: 0.3em;
+  -webkit-box-shadow: -15px 0px 32px -11px rgba(0,0,0,0.75);
+  -moz-box-shadow: -15px 0px 32px -11px rgba(0,0,0,0.75);
+  box-shadow: -15px 0px 32px -11px rgba(0,0,0,0.75);
 }

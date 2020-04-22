@@ -32,13 +32,17 @@ export const AsideNav = ({ navToggled, toggleNav }) => {
             <li className="nav-item">
                 <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i className="fas fa-fw fa-project-diagram"></i>
-                    <span>My projects</span>
+                    <span>My teams</span>
                 </a>
                 <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div className="bg-white py-2 collapse-inner rounded">
-                        <h6 className="collapse-header">Projects</h6>
-                        <a className="collapse-item" href="buttons.html">Proj 1</a>
-                        <a className="collapse-item" href="cards.html">Proj 2</a>
+                        <h6 className="collapse-header">Teams</h6>
+                        <Link to="/teams/123">
+                            <a className="collapse-item">Developers team</a>
+                        </Link>
+                        <Link to="/teams/213">
+                            <a className="collapse-item">Proj management</a>
+                        </Link>
                     </div>
                 </div>
             </li>
