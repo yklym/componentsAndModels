@@ -16,9 +16,10 @@ mongoose.connect(config.DB_URL, { useNewUrlParser: true, useUnifiedTopology: tru
     .then(() => console.log('connected to db'));
 
 
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
+
 
 app.use(express.static(path.join(__dirname, 'client/')));
 

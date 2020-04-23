@@ -1,20 +1,23 @@
-
+const express = require('express');
+const router = express.Router();
+const jwt = require("jsonwebtoken");
 const utils = require('../utils/password');
 const UserModel = require('../models/user');
 
 const {jwtAuthStrategy} = require("../utils/auth");
 const passport = require("passport");
-
+const api_secret = require('../config/config').JWT_SECRET;
 passport.use(jwtAuthStrategy);
 router.use(passport.initialize());
 
 
 module.exports.register = async (req, res, next) => {
+
     const { firstName, lastName, password, email } = req.body;
     if (!firstName || !lastName || !password || !email) {
         // @todo some err handling
         res.status(400).json({
-            err: 'error, mister'
+            err: 'error, mister' 
         });
         return;
     }
@@ -60,18 +63,20 @@ module.exports.login = async (req, res, next) => {
         email,
         password
     } = req.body;
-
+ 
+    
     const user = await UserModel.findOne({
         email: email
     });
-
+ 
     if(!user){
         res.status(406).json({
             err: "wrong login"
         });
         return;
     }
-    if(user.password !== utils.hashPassword(password)){
+
+    if(user.passwordHash !== utils.hashPassword(password)){
         res.status(406).json({
             err: "wrong password"
         });

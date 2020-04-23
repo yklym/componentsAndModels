@@ -10,12 +10,12 @@ export class AuthService {
         } catch  {
             return {
                 _id: '1',
-                firstName: 'Andrii', 
-                lastName: 'Koval', 
-                email: 'mail@mail.com', 
+                firstName: 'Andrii',
+                lastName: 'Koval',
+                email: 'mail@mail.com',
             };
         }
-    } 
+    }
 
     static isAuthorised() {
         return !!AuthService.getCurrentUser();
@@ -23,16 +23,34 @@ export class AuthService {
 
     static async registerUser(userData) {
         const url = apiLink + '/auth/register';
-        const { user } = await postData(url, userData).json();
-        console.log(user);
-        return user;
+
+        return postData(url, userData).then(resp => {
+            return resp.json();
+
+        }).then(userParsed => {
+            return userParsed;
+        }).catch(exception => {
+            return Promise.reject(exception);
+        });
     }
 
     static async loginUser(userData) {
         const url = apiLink + '/auth/login';
-        const { token } = (await postData(url, userData).json()).response;
-        localStorage.setItem('token', token);
-        return  AuthService.getCurrentUser();
+        return postData(url, userData).then(resp => {
+            return resp.json();
+
+        }).then(parsedResp => {
+            console.log(parsedResp);
+            const {token} = parsedResp.response;            
+            localStorage.setItem('token', token);            
+
+            return AuthService.getCurrentUser();
+        }).catch(exception => {
+            return Promise.reject(exception);
+        });
+
+
+        
     }
 
     static logout() {

@@ -14,6 +14,7 @@ export const RegisterModal = ({ show, closeModal, onLogin }) => {
             console.log("passwords dont match")
             return;
         }
+        console.log(data);
         setPasswordsEqual(true);
         AuthService.registerUser(data)
             .then(res => {

@@ -6,5 +6,5 @@ module.exports = {
     CLOUDINARY_URL: process.env.CLOUDINARY_URL,
     PORT: process.env.PORT || 12000,
     PASSWORD_SALT: process.env.PASSWORD_SALT,
-    JWT_SECRET : proces.env.JWT_SECRET
+    JWT_SECRET : process.env.JWT_SECRET
 };

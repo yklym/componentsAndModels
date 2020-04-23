@@ -12,7 +12,12 @@ export const LoginModal = ({ show, closeModal, onRegister }) => {
 
     const onSubmit = (value) => {
         AuthService.loginUser(value)
-        .then(user => setUser(user));
+        .then(user => {
+            setUser(user);
+            closeModal();
+        }).catch(err=>{
+            // 
+        });
     }
 
     return (
@@ -24,13 +29,14 @@ export const LoginModal = ({ show, closeModal, onRegister }) => {
                         <span aria-hidden="true" className="h1">&times;</span>
                     </a>
                 </div>
+
                 <form className="user container" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group row">
                         <input type="text" className="form-control form-control-user" type="email" id="email"
                             name="email" placeholder="Email" ref={register} />
                     </div>
                     <div className="form-group row">
-                        <input type="password" className="form-control form-control-user" id="password" name="password" required minLengt="3"
+                        <input type="password" className="form-control form-control-user" id="password" name="password" required minLength="3"
                             placeholder="Password" ref={register} />
                     </div>
                     <button type="submit" className="btn btn-primary btn-user btn-block">Login</button>

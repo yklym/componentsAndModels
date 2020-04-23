@@ -5,6 +5,6 @@ const controllers = require('../controllers/auth');
 router.post('/register', controllers.register);
 router.post('/login', controllers.login);
 
-router.get('/checkToken', checkAuth, controllers.checkToken );
+// router.get('/checkToken', checkAuth, controllers.checkToken );
 module.exports = router;
 

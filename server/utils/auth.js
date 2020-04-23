@@ -13,8 +13,8 @@ const opts = {
 
 module.exports = {
 
-    jwtAuthStrategy: JwtStrategy(opts, async (jwt_payload, done) => {
-        const userModel = new UserModel();
+    jwtAuthStrategy: new JwtStrategy(opts, async (jwt_payload, done) => {
+        
 
         const result = await UserModel.findOne({
             email: jwt_payload.email
