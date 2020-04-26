@@ -4,24 +4,24 @@ export class TeamsService {
     static getUserTeams(userId) {
         return Promise.resolve([
             {
-                name: 'superMega', members: [
+                name: 'Developers Team', members: [
                     {
                         _id: '1',
-                        firstName: 'Andrii',
-                        lastName: 'Koval',
+                        firstName: 'Yaroslav',
+                        lastName: 'Klymenko',
                         email: 'mail@mail.com',
                     },
                     {
                         _id: '2',
-                        firstName: 'Someone',
-                        lastName: 'Else',
+                        firstName: 'Yaroslav',
+                        lastName: 'Klymenko',
                         email: 'mail@mail.com',
                         avaUrl: 'https://i.ytimg.com/vi/RkeMc3gXsvY/hqdefault.jpg'
                     }
                 ], documents: []
             },
             {
-                name: 'megaTeamNuPiamApple', members: [], documents: [
+                name: 'Proj Managment', members: [], documents: [
                     {
                         title: 'doc',
                         type: 'pdf',
@@ -32,9 +32,9 @@ export class TeamsService {
                     {
                         title: 'foo',
                         type: 'doc',
-                        bio: 'Doc lalalalalalalalalalalalalalal lorem ipsum',
+                        bio: 'lorem ipsum',
                         date: Date.now(),
-                        author: { firstName: 'andrey', lastName: 'koval', _id: '1' }
+                        author: { firstName: 'Yaroslav', lastName: 'Klymenko', _id: '2' }
                     },
                 ]
             },
@@ -44,14 +44,14 @@ export class TeamsService {
     static getTeamById(teamId) {
         return Promise.resolve(
             {
-                name: 'megaTeamNuPiamApple',
+                name: 'Developers Team',
                 members: [
                     {
                         _id: '2',
-                        firstName: 'Someone',
-                        lastName: 'Else',
+                        firstName: 'Yaroslav',
+                        lastName: 'Klymenko',
                         email: 'mail@mail.com',
-                        avaUrl: 'https://i.ytimg.com/vi/RkeMc3gXsvY/hqdefault.jpg'
+                        avaUrl: 'https://pbs.twimg.com/profile_images/964205320896737281/pHl1kIXg_400x400.jpg'
                     },
                     {
                         _id: '1',
@@ -71,9 +71,9 @@ export class TeamsService {
                     {
                         title: 'foo',
                         type: 'doc',
-                        bio: 'Doc lalalalalalalalalalalalalalal lorem ipsum',
+                        bio: 'Doc description',
                         date: Date.now(),
-                        author: { firstName: 'andrey', lastName: 'koval', _id: '1' }
+                        author: { firstName: 'Yaroslav', lastName: 'Klymenko', _id: '2' }
                     },
                 ]
             }

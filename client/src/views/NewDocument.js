@@ -31,8 +31,8 @@ export const NewDocumet = (props) => {
                             <div className="form-group">
                                 <label htmlFor="team">Choose team (optional)</label>
                                 <select name="team" id="team" className="form-control" ref={register}>
-                                    <option value="1">Team 1</option>
-                                    <option value="2">Team 2</option>
+                                    <option value="1">Developers Team</option>
+                                    <option value="2">Proj Managment</option>
                                 </select>
                             </div>
 

@@ -8,7 +8,7 @@ export const User = ({ user }) => {
             <CardImg src={user.avaUrl || userAvaPlaceholer} className="user-img"/>
             <div className="mt-auto">
                 <Card.Title className="mt-2 text-center text-primary">{user.firstName} {user.lastName}</Card.Title>
-                <Card.Text>{user.bio || `The world's creator and roma pidor`}</Card.Text>
+                <Card.Text>{user.bio || `User description`}</Card.Text>
             </div>
         </Card>
     )
