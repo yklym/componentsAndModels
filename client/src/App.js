@@ -18,7 +18,7 @@ import { Team } from './views/Team';
 
 
 toast.configure({
-  autoClose: 3000, 
+  autoClose: 5000, 
   'hideProgressBar': true,
   'position': toast.POSITION.BOTTOM_RIGHT
 });
