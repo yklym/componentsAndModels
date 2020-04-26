@@ -5,14 +5,20 @@ import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Document } from '../components/Document';
 import { TeamsService } from '../services/teamService';
+import { AddMemberModal } from '../components/modals/AddMemberModal';
 import { Link } from 'react-router-dom';
 
 export const Team = (props) => {
 
     const { getCurrentUser } = useContext(AuthContext);
     const [team, setTeam] = useState(null);
+    const [addMemberModalOpened, setAddMemberModalOpened] = useState(false);
     const { id } = useParams();
     console.log(id);
+
+    const toggleAddMemberModal = () => {
+        setAddMemberModalOpened(!addMemberModalOpened)
+    }
 
     if (!team)
         TeamsService.getTeamById(id).then(setTeam);
@@ -27,7 +33,7 @@ export const Team = (props) => {
                 {team ?
                     team.members.map(m => <div key={m.id} className="col-6 col-md-4 col-lg-2"> <User user={m} /></div>) :
                     'loading...'}
-                <div className="col-6 col-md-4 col-lg-2">
+                <div className="col-6 col-md-4 col-lg-2" onClick={toggleAddMemberModal}>
                     <User isPlaceholderToAdd={true} />
                 </div>
             </div>
@@ -47,6 +53,10 @@ export const Team = (props) => {
                     team.documents.map((d, i) => <div key={i} className="col-12 col-md-6 col-lg-6"><Document document={d} /></div>) :
                     'Loading...'}
             </div>
+
+            <AddMemberModal show={addMemberModalOpened} 
+                            closeModal={toggleAddMemberModal}/>
         </div>
+
     )
 }
