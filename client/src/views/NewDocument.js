@@ -1,12 +1,15 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { DocumentService } from '../services/documentService';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export const NewDocumet = (props) => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (value) => {
         console.log(value);
+        toast.info('Your document was added!');
         // DocumentService.addDocument(value)
         //     .then(res => {
         //         console.log(res);
@@ -48,9 +51,11 @@ export const NewDocumet = (props) => {
                                 <input type="file" name="file" className="form-control-file" label="file" id="file" ref={register}></input>
                             </div>
                         </div>
-                        <div className="col-12">
-                            <button type="submit" className="btn btn-primary">Add new document</button>
-                        </div>
+                        <Link to="/home">
+                            <div className="col-12">
+                                <button type="submit" className="btn btn-primary" onClick={onSubmit}>Add new document</button>
+                            </div>
+                        </Link>
                     </div>
                 </form>
             </div>
