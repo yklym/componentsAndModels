@@ -27,6 +27,9 @@ export const Team = (props) => {
                 {team ?
                     team.members.map(m => <div key={m.id} className="col-6 col-md-4 col-lg-2"> <User user={m} /></div>) :
                     'loading...'}
+                <div className="col-6 col-md-4 col-lg-2">
+                    <User isPlaceholderToAdd={true} />
+                </div>
             </div>
             <div className="d-flex">
                 <h2 className="h4 my-4 text-gray-800">Team documents</h2>
